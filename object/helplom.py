@@ -1,17 +1,19 @@
 class Pessoa:
-    def __init__(self,nome=None,idade=None):
+    def __init__(self,*filhos,nome=None,idade=None):
         self.nome=nome
         self.idade=idade
+        self.filhos=list(filhos)
 
     def digaoi(self):
         return f'Oi,{id(self)}'
 if __name__ == '__main__':
-    p = Pessoa('Reinaldo',34)
-    print(p.nome,p.idade)
-    print(Pessoa.digaoi(p))
-    print(p.digaoi())
-    p.nome='Víctor'
-    p.idade=19
-    print(p.nome)
-    print(p.idade)
-    print(id(p))
+    jorge =Pessoa(nome='Jorge',idade=4)
+    lucio = Pessoa(nome='Lúcio',idade=8)
+    reinaldo = Pessoa(lucio,jorge,nome='Reinaldo',idade= 34)
+    print(reinaldo.nome, reinaldo.idade)
+    print(Pessoa.digaoi(reinaldo))
+    print(reinaldo.digaoi())
+    print(reinaldo.idade)
+    print(id(reinaldo))
+    for filho in reinaldo.filhos:
+        print(filho.nome,filho.idade)
