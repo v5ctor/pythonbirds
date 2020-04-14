@@ -4,6 +4,12 @@ class Pessoa:
         self.nome=nome
         self.idade=idade
         self.filhos=list(filhos)
+    @staticmethod
+    def classe_estatic():
+        return 8
+    @classmethod
+    def metd_clas(cls):
+        return f'{cls} - dedos_mao: {cls.dedos_mao}'
 
     def digaoi(self):
         return f'Oi,{id(self)}'
@@ -25,8 +31,8 @@ if __name__ == '__main__':
     del lucio.filhos
     del jorge.filhos
     del reinaldo.filhos
-    reinaldo.dedos_mao = 9
-    lucio.dedos_mao = 11
+    reinaldo.dedos_mao = Pessoa.dedos_mao
+    lucio.dedos_mao = Pessoa.dedos_mao
     jorge.dedos_mao = Pessoa.dedos_mao
     print(reinaldo.__dict__)
     print(lucio.__dict__)
@@ -34,3 +40,5 @@ if __name__ == '__main__':
     print(reinaldo.dedos_mao)
     print(lucio.dedos_mao)
     print(jorge.dedos_mao)
+    print(Pessoa.classe_estatic(), lucio.classe_estatic(), jorge.classe_estatic())
+    print(Pessoa.metd_clas(), lucio.metd_clas(), jorge.metd_clas())
